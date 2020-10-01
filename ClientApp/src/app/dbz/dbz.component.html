@@ -1,0 +1,45 @@
+<h1>Dragonball Z Members</h1>
+<p *ngIf="!dbzMembers"><em>Loading...</em></p>
+
+<table class="table table-striped" *ngIf="dbzMembers">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Attacks</th>
+            <th>Defense</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let member of dbzMembers">
+            <td>{{member.id}}</td>
+            <td>{{member.name}}</td>
+            <td>{{member.attack}}</td>
+            <td>{{member.defense}}</td>
+            <td>{{member.notes}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="row">
+    <div class="col-2"><label>Name</label></div>
+    <div class="col-6"><input [(ngModel)]="newMember.name" type="text" placeholder="Name"></div>
+</div>
+<div class="row">
+    <div class="col-2"><label>Attack</label></div>
+    <div class="col-6"><input type="text" [(ngModel)]="newMember.attack"></div>
+</div>
+<div class="row">
+    <div class="col-2"><label>Defense</label></div>
+    <div class="col-6"><input type="text" [(ngModel)]="newMember.defense"></div>
+</div>
+<div class="row">
+    <div class="col-2"><label>Notes</label></div>
+    <div class="col-6"><input type="text" [(ngModel)]="newMember.notes"></div>
+</div>
+<div class="row">
+    <div class="col-6"><button class="btn btn-primary" (click)="addMember()">Save</button></div>
+</div>
+
+
