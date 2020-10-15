@@ -20,9 +20,9 @@ import { CalendarComponent } from './calendar/calendar.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
-  interactionPlugin,
+  timeGridPlugin,
   listPlugin,
-  timeGridPlugin
+  interactionPlugin
 ]);
 
 @NgModule({
