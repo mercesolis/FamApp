@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FullCalendarModule, Calendar } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
+import interactionPlugin from '@fullcalendar/interaction'; // a plugin
+import listPlugin from '@fullcalendar/list';
+import timeGridPlugin from '@fullcalendar/timegrid';
 import { CalendarOptions, DateSelectArg, EventClickArg, EventApi } from '@fullcalendar/angular';
 
 @Component({
@@ -19,7 +24,7 @@ export class CalendarComponent implements OnInit {
     editable: true,
     selectable: true,
     selectMirror: true,
-    // dateClick: this.handleDateClick.bind(this), // bind is important!
+    dateClick: this.handleDateClick.bind(this), // bind is important!
     events: [
       { title: 'Capstone Due', date: '2020-10-25' },
     ],
@@ -34,9 +39,9 @@ export class CalendarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // handleDateClick(arg) {
-  //   alert('date click! ' + arg.dateStr);
-  // }
+  handleDateClick(arg) {
+  alert('date click! ' + arg.dateStr);
+  }
 
   handleEvents(events: EventApi[]) {
     this.currentEvents = events;
@@ -70,3 +75,26 @@ export class CalendarComponent implements OnInit {
   }
 
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  const calendarEl = document.getElementById('calendar');
+
+  const calendar = new Calendar(calendarEl, {
+    plugins: [ dayGridPlugin, interactionPlugin ],
+    dateClick: function(info) {
+      alert('Clicked on: ' + info.dateStr);
+      alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+      alert('Current view: ' + info.view.type);
+      // change the day's background color just for fun
+      info.dayEl.style.backgroundColor = 'red';
+    }
+  });
+
+
+
+  calendar.render();
+
+
+});
+
+
