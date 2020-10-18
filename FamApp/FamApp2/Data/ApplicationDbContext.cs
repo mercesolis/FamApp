@@ -19,5 +19,13 @@ namespace FamApp2.Data
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder builder){
+            builder.Entity<FamilyUser>()
+            .HasData(
+                new FamilyUser {Id = 1, Name = "Mercedes", UserID = "8877cebd-2eef-4426-be63-4ed0ea251a69"}
+            );
+            base.OnModelCreating(builder);
+        }
     }
 }
