@@ -5,6 +5,8 @@ import interactionPlugin from '@fullcalendar/interaction'; // a plugin
 import listPlugin from '@fullcalendar/list';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import { CalendarOptions, DateSelectArg, EventClickArg, EventApi } from '@fullcalendar/angular';
+import { EventService } from '../services/event.service';
+import { Events } from '../interfaces/events';
 
 @Component({
   selector: 'app-calendar',
@@ -12,6 +14,8 @@ import { CalendarOptions, DateSelectArg, EventClickArg, EventApi } from '@fullca
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
+
+  public events: Events[];
 
   eventId = 0;
   calendarOptions: CalendarOptions = {
@@ -24,19 +28,19 @@ export class CalendarComponent implements OnInit {
     editable: true,
     selectable: true,
     selectMirror: true,
+    events: this.events,
     dateClick: this.handleDateClick.bind(this), // bind is important!
-    events: [
-      { title: 'Capstone Due', date: '2020-10-25' },
-    ],
     eventsSet: this.handleEvents.bind(this),
     select: this.handleDateSelect.bind(this),
     eventClick: this.handleEventClick.bind(this),
   };
 
   currentEvents: EventApi[] = [];
-  constructor() { }
 
-  ngOnInit(): void {
+  constructor(private eventService: EventService) {}
+
+  async ngOnInit() {
+    this.events = await this.eventService.getEvents();
   }
 
   handleDateClick(arg) {
@@ -76,25 +80,6 @@ export class CalendarComponent implements OnInit {
 
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  const calendarEl = document.getElementById('calendar');
 
-  const calendar = new Calendar(calendarEl, {
-    plugins: [ dayGridPlugin, interactionPlugin ],
-    dateClick: function(info) {
-      alert('Clicked on: ' + info.dateStr);
-      alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
-      alert('Current view: ' + info.view.type);
-      // change the day's background color just for fun
-      info.dayEl.style.backgroundColor = 'blue';
-    }
-  });
-
-
-
-  calendar.render();
-
-
-});
 
 

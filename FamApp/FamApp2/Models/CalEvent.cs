@@ -15,6 +15,8 @@ namespace FamApp2.Models
         [Key]
         public int Id { get; set; }
         public string Title { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime Start { get;set;}
         public string UserID { get; set; }
         
         public ApplicationUser User { get; set; }
