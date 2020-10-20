@@ -21,9 +21,21 @@ export class CalendarComponent implements OnInit {
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     headerToolbar: {
-      left: 'prev,next today',
+      left: 'prev,next today addEventButton',
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+    },
+    customButtons: {
+      addEventButton: {
+        text: 'add event...',
+        /*click: function() {
+          var dateStr = prompt('Enter a date in YYYY-MM-DD format');
+          var date = new Date(dateStr + 'T00:00:00'); // will be in local time*/
+          
+          
+        
+        
+      }
     },
     editable: true,
     selectable: true,
