@@ -1,4 +1,5 @@
 ﻿using FamApp2.Models;
+using AutoMapper.Configuration;
 using IdentityServer4.EntityFramework.Options;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
@@ -12,8 +13,9 @@ namespace FamApp2.Data
 {
     public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>
     {
-        
+        public IConfiguration Configuration { get; }
         public DbSet<FamilyUser>FamilyUsers { get; set; }
+        public DbSet<CalEvent> CalEvents {get;set;}
         public ApplicationDbContext(
             DbContextOptions options,
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
