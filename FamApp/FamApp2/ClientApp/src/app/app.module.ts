@@ -15,6 +15,7 @@ import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { CalendarComponent } from './calendar/calendar.component';
+import { EventsComponent } from './events/events.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -28,7 +29,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CalendarComponent
+    CalendarComponent,
+    EventsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -38,7 +40,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     ApiAuthorizationModule,
     RouterModule.forRoot([
       { path: '', component: CalendarComponent, pathMatch: 'full' },
-      
+      { path: 'myevents', component: EventsComponent},
     ])
   ],
   providers: [
