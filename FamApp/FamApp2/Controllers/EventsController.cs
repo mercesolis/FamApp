@@ -25,14 +25,15 @@ namespace FamApp2.Controllers
         [HttpGet]
         public IEnumerable<CalEvent> Get()
         {
-            //var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return _context.CalEvents;
+            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return _context.CalEvents.Where(e => e.UserID == userId);
         }
 
         [HttpPost]
         public CalEvent Post([FromBody] CalEvent plan)
         {
-            _context.CalEvents.Add(plan);
+            plan.UserID = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            _context.Add(plan);
             _context.SaveChanges();
             return plan;
         }

@@ -13,7 +13,7 @@ export class EventService {
     return this.httpClient.get<Events[]>(`${this.baseUrl}events`).toPromise();
   }
 
-  addEvent(newEvent: Events): Promise<Events[]> {
-    return this.httpClient.get<Events[]>(`${this.baseUrl}events`).toPromise();
+  public async addEvent(event: Events): Promise<Events> {
+    return this.httpClient.post<Events>(`${this.baseUrl}events`, event).toPromise();
   }
 }
