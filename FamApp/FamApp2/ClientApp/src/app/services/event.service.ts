@@ -14,6 +14,6 @@ export class EventService {
   }
 
   addEvent(newEvent: Events): Promise<Events[]> {
-    return this.httpClient.get<Events[]>(`${this.baseUrl}newEvent`).toPromise();
+    return this.httpClient.get<Events[]>(`${this.baseUrl}events`).toPromise();
   }
 }

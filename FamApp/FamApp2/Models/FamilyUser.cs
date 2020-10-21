@@ -13,7 +13,10 @@ namespace FamApp2.Models
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
+        public DateTime Date { get; set; }
+        
         public string UserID { get; set; }
+        
         public ApplicationUser User { get; set; }
     }
 }

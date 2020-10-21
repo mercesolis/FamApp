@@ -38,6 +38,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     ApiAuthorizationModule,
     RouterModule.forRoot([
       { path: '', component: CalendarComponent, pathMatch: 'full' },
+      
     ])
   ],
   providers: [

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FullCalendarModule, Calendar } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
 import interactionPlugin from '@fullcalendar/interaction'; // a plugin
+import { createEventId } from './event-utils';
 import listPlugin from '@fullcalendar/list';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import { CalendarOptions, DateSelectArg, EventClickArg, EventApi } from '@fullcalendar/angular';
@@ -16,6 +17,13 @@ import { Events } from '../interfaces/events';
 export class CalendarComponent implements OnInit {
 
   public events: Events[];
+  public newEvent: Events = {
+    id: undefined,
+    title: '',
+    description: '',
+    date: new Date('2020-10-20'),
+
+  };
 
   eventId = 0;
   calendarOptions: CalendarOptions = {
@@ -31,23 +39,29 @@ export class CalendarComponent implements OnInit {
         /*click: function() {
           var dateStr = prompt('Enter a date in YYYY-MM-DD format');
           var date = new Date(dateStr + 'T00:00:00'); // will be in local time*/
-          
-          
-        
-        
       }
     },
+    events: [
+      {
+        title: 'Capstone',
+        start: '2020-10-25'
+      },
+      {
+        title: 'birthday',
+        start: '2020-10-26',
+        end: '2020-10-28'
+      }
+    ],
     editable: true,
     selectable: true,
     selectMirror: true,
-    events: this.events,
     dateClick: this.handleDateClick.bind(this), // bind is important!
     eventsSet: this.handleEvents.bind(this),
     select: this.handleDateSelect.bind(this),
     eventClick: this.handleEventClick.bind(this),
   };
 
-  currentEvents: EventApi[] = [];
+  currentEvents: EventService[] = [];
 
   constructor(private eventService: EventService) {}
 
@@ -59,7 +73,7 @@ export class CalendarComponent implements OnInit {
   alert('date click! ' + arg.dateStr);
   }
 
-  handleEvents(events: EventApi[]) {
+  handleEvents(events: EventService[]) {
     this.currentEvents = events;
   }
 
@@ -67,20 +81,22 @@ export class CalendarComponent implements OnInit {
     const title = prompt('Please enter a new title for your event');
     const calendarApi = selectInfo.view.calendar;
 
+
     calendarApi.unselect(); // clear date selection
 
     if (title) {
       calendarApi.addEvent({
-        id: this.createEventID(),
+        id: this.createEventId(),
         title,
         start: selectInfo.startStr,
         end: selectInfo.endStr,
         allDay: selectInfo.allDay
       });
     }
+
   }
 
-  createEventID() {
+  createEventId() {
     return String(this.eventId++);
   }
 
@@ -91,6 +107,7 @@ export class CalendarComponent implements OnInit {
   }
 
 }
+
 
 
 
