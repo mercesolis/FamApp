@@ -17,6 +17,7 @@ import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { CalendarComponent } from './calendar/calendar.component';
 import { EventsComponent } from './events/events.component';
+import { EventmodalComponent } from './eventmodal/eventmodal.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -31,7 +32,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     NavMenuComponent,
     HomeComponent,
     CalendarComponent,
-    EventsComponent
+    EventsComponent,
+    EventmodalComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -48,6 +50,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [EventmodalComponent]
 })
 export class AppModule { }

@@ -21,7 +21,7 @@ export class CalendarComponent implements OnInit {
     id: undefined,
     title: '',
     description: '',
-    date: new Date('2020-10-20'),
+    start: null,
 
   };
 

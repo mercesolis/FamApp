@@ -38,6 +38,14 @@ namespace FamApp2.Controllers
             return plan;
         }
 
+        [HttpDelete("{id}")]
+        public void Delete([FromRoute] int id)
+        {
+            var calEvent = _context.CalEvents.FirstOrDefault(b => b.Id == id);
+            _context.CalEvents.Remove(calEvent);
+            _context.SaveChanges();
+        }
+
     
 
     }

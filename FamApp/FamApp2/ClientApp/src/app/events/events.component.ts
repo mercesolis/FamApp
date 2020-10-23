@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from '../services/event.service';
 import { Events } from '../interfaces/events';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { EventmodalComponent } from '../eventmodal/eventmodal.component';
 
 @Component({
   selector: 'app-events',
@@ -14,7 +15,7 @@ export class EventsComponent implements OnInit {
   public newEvent: Events = {
     id: undefined,
     title: '',
-    date: null,
+    start: null,
     description: '',
   };
   closeResult = '';
@@ -30,22 +31,18 @@ export class EventsComponent implements OnInit {
 
   }
 
-  open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      //this.closeResult;
-    });
-  }
+  async open(): Promise<void> {
+    const modal = this.modalService.open(EventmodalComponent);
+    const modalComponent = modal.componentInstance;
+    modalComponent.modalInstance = modal;
+    const theResult = await modal.result;
 
-  /*private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
+    if(theResult === 'yes'){
+      this.events = await this.eventService.getEvents();
     }
-  }*/
+  }
+  
+
+
 
 }
