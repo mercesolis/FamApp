@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
@@ -33,7 +34,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     HomeComponent,
     CalendarComponent,
     EventsComponent,
-    EventmodalComponent
+    EventmodalComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -42,6 +43,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     FormsModule,
     FullCalendarModule,
     ApiAuthorizationModule,
+    MatSnackBarModule,
     RouterModule.forRoot([
       { path: '', component: CalendarComponent, pathMatch: 'full' },
       { path: 'myevents', component: EventsComponent},

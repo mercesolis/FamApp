@@ -3,6 +3,7 @@ import { EventService } from '../services/event.service';
 import { Events } from '../interfaces/events';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { EventmodalComponent } from '../eventmodal/eventmodal.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-events',
@@ -21,6 +22,8 @@ export class EventsComponent implements OnInit {
   closeResult = '';
   constructor(private eventService: EventService, private modalService: NgbModal) { }
 
+  
+  
   async ngOnInit() {
     this.events = await this.eventService.getEvents();
   }
@@ -40,9 +43,14 @@ export class EventsComponent implements OnInit {
     if(theResult === 'yes'){
       this.events = await this.eventService.getEvents();
     }
-  }
+
+    
+
+
+
+
   
-
-
-
+  }
 }
+
+
