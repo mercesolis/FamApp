@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from '../services/event.service';
 import { Events } from '../interfaces/events';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class EventmodalComponent implements OnInit {
 
   modalInstance;
 
-  constructor(private eventService: EventService) { }
+  constructor(private eventService: EventService, private snackBar: MatSnackBar) { }
 
 
   ngOnInit(): void {
@@ -29,10 +30,14 @@ export class EventmodalComponent implements OnInit {
   async yes() {
     await this.eventService.addEvent(this.newEvent);
     this.modalInstance.close('yes');
-  }
+    
+    }
+
+  
+
 
   close () {
     this.modalInstance.close('no');
   }
-
 }
+

@@ -19,6 +19,7 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
 import { CalendarComponent } from './calendar/calendar.component';
 import { EventsComponent } from './events/events.component';
 import { EventmodalComponent } from './eventmodal/eventmodal.component';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -44,6 +45,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     FullCalendarModule,
     ApiAuthorizationModule,
     MatSnackBarModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot([
       { path: '', component: CalendarComponent, pathMatch: 'full' },
       { path: 'myevents', component: EventsComponent},

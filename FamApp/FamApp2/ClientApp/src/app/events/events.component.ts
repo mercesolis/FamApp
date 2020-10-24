@@ -20,7 +20,7 @@ export class EventsComponent implements OnInit {
     description: '',
   };
   closeResult = '';
-  constructor(private eventService: EventService, private modalService: NgbModal) { }
+  constructor(private eventService: EventService, private modalService: NgbModal, private snackBar: MatSnackBar) { }
 
   
   
@@ -41,6 +41,10 @@ export class EventsComponent implements OnInit {
     const theResult = await modal.result;
 
     if(theResult === 'yes'){
+      this.snackBar.open('Event Added!', '', {
+        duration: 5000,
+        verticalPosition: 'top'
+      });
       this.events = await this.eventService.getEvents();
     }
 
