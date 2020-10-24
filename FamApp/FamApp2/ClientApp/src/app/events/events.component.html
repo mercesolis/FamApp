@@ -1,4 +1,8 @@
-<h1>My Events</h1>
+<h1>My Events
+    <button [hidden]="!events" class="btn btn-lg btn-outline-primary" (click)="open()">Add Event</button>
+
+</h1>
+
 <p *ngIf="!events"><em>Login or Register</em></p>
 
 <table class="table table-striped" *ngIf="events">
@@ -24,7 +28,6 @@
 
 </table>
 
-<button [hidden]="!events" class="btn btn-lg btn-outline-primary" (click)="open()">Add Event</button>
 
 
   
