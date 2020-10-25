@@ -1,0 +1,4 @@
+{
+    "appService.preDeployTask": "publish-release",
+    "appService.deploySubpath": "FamApp2/bin/Release/netcoreapp3.1/publish"
+}
