@@ -24,5 +24,5 @@ the calendar *technically* works, just doesn't add events to the database, howev
 
 - register and start adding events!
 - 'add event' button pops up a modal 
-- once event is saved, super cute snackbar confirms event was added
+- once event is saved, super cool snackbar confirms event was added
 
