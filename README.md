@@ -1,6 +1,6 @@
 # FamApp -- Capstone
 
-# Find the project in FamApp>FamApp>FamApp2 (project in project, sorry)
+# Find the project in FamApp>FamApp>FamApp2 (project inside project, sorry)
 
 ## Rubric
 
@@ -20,5 +20,9 @@ the calendar *techincally* works, just doesn't add events to the database, howev
 - change calendar views: month, week, day, list
 
 
-## My Events link (where the magic happens)
+## 'My Events' link (where the magic happens)
+
+- register and start adding events!
+- 'add event' button pops up a modal 
+- once event is saved, super cute snackbar confirms event was added
 
