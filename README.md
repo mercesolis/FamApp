@@ -11,13 +11,14 @@
 - [ ] Utilizes another API (I got an API key from a federal holiday api but couldn't implement it into fullcalendar :() 
 
 ## FullCalendar
-
+took a majority of my time (90%)
 the calendar *technically* works, just doesn't add events to the database, however some cool features I **did** get working:
 
 - drag and drop an event!
 - drag ends of event to lengthen or shorten dates
 - added an "add event" button (does not currently work lol)
 - change calendar views: month, week, day, list
+- date click
 
 
 ## 'My Events' link (where the magic happens)
