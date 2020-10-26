@@ -4,7 +4,7 @@
 
 ## Rubric
 
-- [x] App is hosted (obvi)
+- [x] App is hosted
 - [x] Use bootstrap with all custom components (Add Event Modal)
 - [x] Use Angular Material ('Event Added' matsnackbar)
 - [ ] Instructor's discretion. (Design, usefulness, look and feel, clean code, etc) (FullCalendar looks good, just doesn't fully work yet)
