@@ -12,7 +12,7 @@
 
 ## FullCalendar
 
-the calendar *techincally* works, just doesn't add events to the database, however some cool features I **did** get working:
+the calendar *technically* works, just doesn't add events to the database, however some cool features I **did** get working:
 
 - drag and drop an event!
 - drag ends of event to lengthen or shorten dates
