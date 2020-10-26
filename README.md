@@ -1,11 +1,13 @@
 # FamApp -- Capstone
 
+# Find the project in FamApp>FamApp>FamApp2 (project in project, sorry)
+
 ## Rubric
 
 - [x] App is hosted (obvi)
 - [x] Use bootstrap with all custom components (Add Event Modal)
 - [x] Use Angular Material ('Event Added' matsnackbar)
-- [?] Instructor's discretion. (Design, usefulness, look and feel, clean code, etc) (FullCalendar looks good, just doesn't fully work yet)
+- [ ] Instructor's discretion. (Design, usefulness, look and feel, clean code, etc) (FullCalendar looks good, just doesn't fully work yet)
 - [ ] Utilizes another API (I got an API key from a federal holiday api but couldn't implement it into fullcalendar :() 
 
 ## FullCalendar
